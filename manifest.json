@@ -1,7 +1,7 @@
 {
-  "name": "Sıla Yolu",
-  "short_name": "SılaYolu",
-  "start_url": "./index.html",
+  "name": "S\u0131la Yolu",
+  "short_name": "S\u0131la Yolu",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#f4f4f4",
   "theme_color": "#2b5797",
