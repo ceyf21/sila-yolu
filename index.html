@@ -1,58 +1,44 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#2b5797" />
-  <title>Sıla Yolu</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon.png" />
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      color: #2b5797;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      background: white;
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    a {
-      text-decoration: none;
-      color: #2b5797;
-      font-weight: bold;
-    }
-  </style>
-</head>
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sıla Yolu</title><link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.png" /><meta name="theme-color" content="#2b5797" />
+<style>body{font-family:sans-serif;margin:0;background:#f4f4f4;color:#2b5797}
+[data-theme="dark"]{background:#1e1e1e;color:#d0d8ff}ul{list-style:none;padding:20px}
+li{margin:10px 0;padding:15px;background:#fff;border-radius:8px}
+a{color:inherit;text-decoration:none}</style></head>
 <body>
-  <h1>Sıla Yolu Linkleri</h1>
-  <ul>
-    <li><a href="https://ematrica.nemzetiutdij.hu" target="_blank">Macaristan Vinyet (Resmî)</a></li>
-    <li><a href="https://www.roviniete.ro/tr/customer-info" target="_blank">Romanya Vinyet</a></li>
-    <li><a href="https://web.bgtoll.bg/Evignette/Create?vignetteTypeID=5" target="_blank">Bulgaristan Vinyet</a></li>
-    <li><a href="https://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/sirbistan/macaristan/roszke-horgos/" target="_blank">Roszke–Horgos Sınır Kapısı (Canlı)</a></li>
-    <li><a href="http://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/sirbistan/macaristan/tompa-kelebija/" target="_blank">Tompa–Kelebija Sınır Kapısı (Canlı)</a></li>
-    <li><a href="http://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/sirbistan/bulgaristan/gradina-kalotina/" target="_blank">Gradina–Kalotina Sınır Kapısı (Canlı)</a></li>
-    <li><a href="https://alltrafficcams.com/de/live/grenzubergang/turkei/bulgarien/kapikule-kapitan-andreewo/" target="_blank">Kapıkule–Kapitan Andreevo Sınır Kapısı (Canlı)</a></li>
-    <li><a href="https://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/yunanistan/turkiye/pazarkule-kestanelik/" target="_blank">Pazarkule–Kestanelik Sınır Kapısı (Canlı)</a></li>
-  </ul>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('Service Worker registered!', reg))
-        .catch(err => console.error('Service Worker failed:', err));
-    }
-  </script>
-</body>
-</html>
+<header><h1 id="title">Sıla Yolu Linkleri</h1>
+<button id="langBtn">DE</button><button id="themeBtn">🌙</button></header>
+<div id="alertBar" style="background:#ffcc00;padding:10px;display:block">🛑 Kalotina sınır kapısında yoğunluk var!</div>
+<ul>
+<li><a href="https://ematrica.nemzetiutdij.hu" target="_blank">Macaristan Vinyet (Resmî)</a></li>
+<li><a href="https://www.roviniete.ro/tr/customer-info" target="_blank">Romanya Vinyet</a></li>
+<li><a href="https://web.bgtoll.bg/Evignette/Create?vignetteTypeID=5" target="_blank">Bulgaristan Vinyet</a></li>
+<li><a href="https://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/sirbistan/macaristan/roszke-horgos/" target="_blank">Roszke–Horgos (Canlı)</a></li>
+<li><a href="http://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/sirbistan/macaristan/tompa-kelebija/" target="_blank">Tompa–Kelebija (Canlı)</a></li>
+<li><a href="http://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/sirbistan/bulgaristan/gradina-kalotina/" target="_blank">Gradina–Kalotina (Canlı)</a></li>
+<li><a href="https://alltrafficcams.com/de/live/grenzubergang/turkei/bulgarien/kapikule-kapitan-andreewo/" target="_blank">Kapıkule–Kapitan Andreevo (Canlı)</a></li>
+<li><a href="https://alltrafficcams.com/tr/canli/sinir-kapisi-gumruk/yunanistan/turkiye/pazarkule-kestanelik/" target="_blank">Pazarkule–Kestanelik (Canlı)</a></li>
+</ul>
+<script>
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.onclick = () => {
+  const dark = root.getAttribute('data-theme') === 'dark';
+  root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  localStorage.setItem('theme', dark ? 'light' : 'dark');
+  themeBtn.textContent = dark ? '🌙' : '☀️';
+};
+const langBtn = document.getElementById('langBtn');
+langBtn.onclick = () => {
+  const tr = document.getElementById('title').textContent.includes('Sıla');
+  document.getElementById('title').textContent = tr ? 'Sıla Yolu Links' : 'Sıla Yolu Linkleri';
+  document.getElementById('alertBar').textContent = tr ? '🛑 Stau am Grenzübergang Kalotina!' : '🛑 Kalotina sınır kapısında yoğunluk var!';
+  langBtn.textContent = tr ? 'TR' : 'DE';
+};
+if (localStorage.getItem('theme') === 'dark') {
+  root.setAttribute('data-theme', 'dark');
+  themeBtn.textContent = '☀️';
+}
+</script></body></html>
